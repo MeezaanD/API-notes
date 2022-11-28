@@ -38,16 +38,28 @@
 // };
 // fetchData();
 
+// row
+let wrapper = document.querySelector('.wrapper');
+
 // RANDOM USER
 async function fetchData() {
-    let res = await fetch("https://randomuser.me/api?results=100");
+    let res = await fetch("https://randomuser.me/api?results=28");
     let data = await res.json();
     return data.results;
 };
 (async function display() {
     let data = await fetchData();
     data.forEach( (item)=> {
-        console.log(item);
+        // console.log(item);
+        wrapper.innerHTML +=`
+        <div class="card" style="width: 18rem;">
+        <img src="${item.picture.large}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        </div>`
     })
 })();
 
