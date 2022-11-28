@@ -31,12 +31,27 @@
 // --------------------------------------------------------------------------------------------------------------------------------
 
 // SIMPLIFIED FETCH CODE
+// async function fetchData() {
+//     let res = await fetch("../data/data.json");
+//     let data = await res.json();
+//     console.table(data.results);
+// };
+// fetchData();
+
+// RANDOM USER
 async function fetchData() {
-    let res = await fetch("../data/data.json");
+    let res = await fetch("https://randomuser.me/api?results=100");
     let data = await res.json();
-    console.table(data.results);
+    return data.results;
 };
-fetchData();
+(async function display() {
+    let data = await fetchData();
+    data.forEach( (item)=> {
+        console.log(item);
+    })
+})();
+
+
 // ----------------------------------------------------------------------------------------------------------------------------------
 
 // ARRAYS
